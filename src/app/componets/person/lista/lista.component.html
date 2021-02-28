@@ -1,0 +1,30 @@
+<div class="container pt-5">
+  <div class="card">
+    <h5 class="card-header bg-dark text-white">Lista de personas</h5>
+    <div class="card-body">
+      <table datatable id="dataTable" class="table table-striped table-bordered row-border hover nowrap" cellspacing="0" width="100%" [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>Cedula</th>
+            <th>fecha de nacimiento</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let Data of data">
+            <td>{{ Data.nombre }}</td>
+            <td>{{ Data.apellidos}}</td>
+            <td>{{ Data.cedula }}</td>
+            <td>{{ Data.fechaNac | date : 'yyyy/MM/dd' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+
+
