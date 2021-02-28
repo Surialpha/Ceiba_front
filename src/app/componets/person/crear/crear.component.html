@@ -1,0 +1,67 @@
+<div class="container mt-5">
+  <div class="card">
+    <h5 class="card-header bg-dark text-white">Crear persona</h5>
+    <div class="card-body">
+
+<form [formGroup]="PersonForm" (ngSubmit)="CreatePerson()" >
+
+  <input type="text"  formControlName="id" hidden>
+
+
+
+  <div class="row validaciones" >
+    <div class="text-danger text-sm col" *ngIf="this.PersonForm.controls['nombre'].errors">
+      <div *ngIf="this.PersonForm.controls['nombre'].errors?.required" >  El nombre es requerido </div>
+      <div *ngIf="this.PersonForm.controls['nombre'].errors?.minlength" > Debe contener mínimo 5 caracteres </div>
+      <div *ngIf="this.PersonForm.controls['nombre'].errors?.maxlength" > Debe contener máximo 20 caracteres </div>
+      <div *ngIf="this.PersonForm.controls['nombre'].errors?.pattern" > No debe contener caracteres especiales </div>
+    </div>
+    <div class="text-danger text-sm col" style="text-align: end;" *ngIf="this.PersonForm.controls['apellidos'].errors">
+      <div *ngIf="this.PersonForm.controls['nombre'].errors?.required" >  los apellido son requeridos</div>
+      <div *ngIf="this.PersonForm.controls['apellidos'].errors?.minlength" > Debe contener mínimo 5 caracteres </div>
+      <div *ngIf="this.PersonForm.controls['apellidos'].errors?.maxlength" > Debe contener máximo 50 caracteres </div>
+      <div *ngIf="this.PersonForm.controls['apellidos'].errors?.pattern" > No debe contener caracteres especiales </div>
+    </div>
+  </div>
+
+  <div class="input-group mb-3">
+    <span  class="input-group-text">Nombre</span>
+    <input formControlName="nombre" type="text" class="form-control" placeholder="..." aria-label="Primer Nombre" aria-describedby="basic-addon2">
+    <span class="input-group-text">Apellidos</span>
+    <input formControlName="apellidos" type="text" class="form-control" placeholder="..." aria-label="Otros apellidos" aria-describedby="basic-addon2">
+  </div>
+
+  <div class="row validaciones" >
+    <div class="text-danger text-sm col" *ngIf="this.PersonForm.controls['cedula'].errors">
+      <div *ngIf="this.PersonForm.controls['cedula'].errors?.required" >  La cedula es requerida </div>
+      <div *ngIf="this.PersonForm.controls['cedula'].errors?.minlength" > Debe contener mínimo 5 caracteres </div>
+      <div *ngIf="this.PersonForm.controls['cedula'].errors?.maxlength" > Debe contener máximo 20 caracteres </div>
+      <div *ngIf="this.PersonForm.controls['cedula'].errors?.pattern" > Solo debe contener numeros </div>
+    </div>
+  </div>
+  <div class="input-group mb-3">
+    <span  class="input-group-text">Cédula</span>
+    <input formControlName="cedula" type="text" class="form-control" placeholder="..." aria-label="Primer Nombre" aria-describedby="basic-addon2">
+   </div>
+
+
+   <div class="row validaciones" >
+    <div class="text-danger text-sm col" *ngIf="this.PersonForm.controls['fechaNac'].errors">
+      <div *ngIf="this.PersonForm.controls['fechaNac'].errors?.required" >  La fecha de nacimiento es requerida </div>
+    </div>
+  </div>
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon2">Fecha nacimiento</span>
+    <input formControlName="fechaNac" id="datefield" max='{{maxDate}}' type="date" class="form-control"  aria-describedby="basic-addon2">
+  </div>
+
+
+  <div class="col-12 mt-4 text-center">
+    <button [disabled]="PersonForm.invalid" type="submit" class="btn btn-primary">Guardar</button>
+  </div>
+</form>
+
+
+    </div>
+  </div>
+</div>
